@@ -1,9 +1,10 @@
 {
   "name": "csrf-user",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "User based CSRF protection middleware for Express",
   "dependencies": {
-    "crypto": "0.0.3"
+    "formidable": ">=1.0.14",
+    "underscore": ">=1.6.0"
   },
   "main": "csrf-user.js",
   "scripts": {
@@ -24,7 +25,5 @@
   "bugs": {
     "url": "https://github.com/crazydog115/csrf-user/issues"
   },
-  "homepage": {
-    "url": "https://github.com/crazydog115/csrf-user"
-  }
+  "homepage": "https://github.com/crazydog115/csrf-user"
 }
