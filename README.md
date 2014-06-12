@@ -11,11 +11,11 @@ Its only dependcy is the crypto module.
     app.use(cookieParser()); //requires cookie-parser package in Express 4.x+
     app.use(session({secret: 'Your Session Secret'}));
     
-######2. Call the middleware* 
+######2. Call the middleware
       app.use(csrf('Your CSRF Secret', 'username'));
 There are four arguments that can be passed, to csrf(), but only first two are required.
 
-csrf(secret, username, [sessionVar], [timeout]);
+      csrf(secret, username, [sessionVar], [timeout]);
 
 * secret: A unique secret key to use for hashing the CSRF token.
 * usernameVar: The session variable (req.session.usernameVar) where the curren't user's username is stored.
