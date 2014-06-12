@@ -1,0 +1,20 @@
+{
+  "name": "csrf-user",
+  "version": "0.1.0",
+  "description": "User based CSRF protection middleware for Express",
+  "dependencies": {
+    "crypto": "0.0.3"
+  },
+  "main": "csrf-user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CSRF",
+    "protection",
+    "express",
+    "middleware"
+  ],
+  "author": "Jonah Hirsch",
+  "license": "ISC"
+}
