@@ -30,7 +30,7 @@ For example:
     <input type="hidden" id="token" value="<% signed %>" />
 Where <% signed %> gets replaced by your CSRF token (stored in your session as whatever you set sessionVa to).
 
-#######4. Set the X-CSRF-Token header
+######4. Set the X-CSRF-Token header
 Ensure that any POST, PUT, or DELETE requests have the X-CSRF-Token header set to the token value.
 
 Example using jQuery:
