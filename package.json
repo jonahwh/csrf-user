@@ -1,6 +1,6 @@
 {
   "name": "csrf-user",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "User based CSRF protection middleware for Express",
   "dependencies": {
     "crypto": "0.0.3"

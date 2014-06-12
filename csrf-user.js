@@ -1,17 +1,18 @@
 var crypto = require('crypto');
 
-module.exports = function(secret, sessionVar, timeout){
+module.exports = function(secret, usernameVar, sessionVar, timeout){
     return function(req, res, next){
 
-        if(undefined == secret) throw("Secret is required!");
+        if(undefined == secret) throw("csrf-user: Secret is required!");
+        if(undefined == usernameVar) throw("csrf-user: Username is required!");
         if(undefined == sessionVar) sessionVar = 'signed';
-        if(undefined == timeout) timeout = 3600;
+        if(undefined == timeout) timeout = 60;
 
         if(req.method == "GET"){
-            var token   = toHex(req.session.cas_user)+'.'+Date.now()+'.'+Math.random().toString(36).substring(7);
+            var token   = toHex(req.session[usernameVar])+'.'+Date.now()+'.'+Math.random().toString(36).substring(7);
             var hash    = crypto.createHmac('sha1', secret).update(token).digest('hex');
             req.session[sessionVar] = _.escape(token+'-'+hash);
-        }else if(req.method == "POST"){
+        }else if(req.method == "POST" || req.method == "PUT" || req.method == "DELETE"){
             var isok = false;
             var signed = req.get('x-csrf-token');
             if(undefined == signed) signed = req.body.token;
@@ -21,12 +22,11 @@ module.exports = function(secret, sessionVar, timeout){
                 var hash    = parts[1];
             }
             var tokenParts = token.split('.');
-            if(tokenParts[1]+timeout >= Date.now() && hash === crypto.createHmac('sha1', secret).update(token).digest('hex')){
+            if(parseInt(tokenParts[1])+(timeout*60*1000) >= Date.now() && hash === crypto.createHmac('sha1', secret).update(token).digest('hex')){
                 isok = true;
             }
             if(!isok){
-                res.send(403);
-                return res.end('Forbidden');
+                return res.send('403: Forbidden', 403);
             }
         }
         next();
