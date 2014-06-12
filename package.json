@@ -16,5 +16,16 @@
     "middleware"
   ],
   "author": "Jonah Hirsch",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:crazydog115/csrf-user.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crazydog115/csrf-user/issues",
+  }
+  "homepage": {
+    "url": "https://github.com/crazydog115/csrf-user"
+  }
+  
 }
