@@ -22,7 +22,7 @@ There are four arguments that can be passed, to csrf(), but only first two are r
 * sessionVar: (default='signed') The sesssion variable (req.session.sessionVar) to save the CSRF token in. Use this to inject the token into your app.
 * timeout: (default = 60) Number of minutes after which CSRF token should be invalidated.
 
-####""#""#3. Inject the token into your app
+######3. Inject the token into your app
 Inject the token into your HTML such that you can set it as a header in your POST, PUT, and DELETE requests.
 
 For example:
