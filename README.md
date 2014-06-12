@@ -16,8 +16,8 @@ There are four arguments that can be passed, to csrf(), but only first two are r
       csrf(secret, username, [sessionVar], [timeout]);
 
 * secret: A unique secret key to use for hashing the CSRF token.
-* usernameVar: The session variable (req.session.usernameVar) where the curren't user's username is stored.
-* sessionVar: (default='signed') The sesssion variable (req.session.sessionVar) to save the CSRF token in. Use this to inject the token into your app.
+* usernameVar: The session variable (req.session.usernameVar) where the current user's username is stored.
+* sessionVar: (default='signed') The session variable (req.session.sessionVar) to save the CSRF token in. Use this to inject the token into your app.
 * timeout: (default = 60) Number of minutes after which CSRF token should be invalidated.
 
 ######3. Inject the token into your app
@@ -37,10 +37,6 @@ Example using jQuery:
 		    xhr.setRequestHeader('X-CSRF-Token', $('#token').val());
     	}
     });
-      
-You can also add a form field with the name "token" with the value set to the token.
-
-*Please note if you use this method, and you need to handle the form data, you cannot parse the form with formidable again - your app will hang. This middleware sets req.session.form to an object containing two objects: fields, and files, which are the same objects you would get from formidable.*
 
 -----
 
