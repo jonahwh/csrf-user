@@ -11,12 +11,13 @@ CSRF-User is a quick and easy CSRF protection middleware for Express that protec
     
 ######2. Call the middleware
       app.use(csrf('Your CSRF Secret', 'username'));
-There are four arguments that can be passed, to csrf(), but only first two are required.
+There are five arguments that can be passed, to csrf(), but only first two are required.
 
-      csrf(secret, username, [sessionVar], [timeout]);
+      csrf(secret, username, [disableCSRF], [sessionVar], [timeout]);
 
 * secret: A unique secret key to use for hashing the CSRF token.
 * usernameVar: The session variable (req.session.usernameVar) where the current user's username is stored.
+* disableCSRF: (default = []) Array of paths to disable CSRF protection on. For example `['/public', '/help']`.
 * sessionVar: (default='signed') The session variable (req.session.sessionVar) to save the CSRF token in. Use this to inject the token into your app.
 * timeout: (default = 60) Number of minutes after which CSRF token should be invalidated.
 
